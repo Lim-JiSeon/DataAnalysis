@@ -1,1 +1,0 @@
-# privateclass 후기

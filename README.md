@@ -1,17 +1,20 @@
 # DataAnalysis
 
-## 목차
+## Content
 
 ### Study
 - Crawling
   - Codemate
     - Crawling
       1. [Crawling Introduction](https://github.com/Lim-JiSeon/DataAnalysis/blob/main/Crawling%20%26%20Scraping/codemate/Crawling/Crawling%20Introduction/READ.md)
-      2. [Types of Crawling]()
+      2. [Types of Crawling](https://github.com/Lim-JiSeon/DataAnalysis/blob/main/Crawling%20%26%20Scraping/codemate/Crawling/Types%20of%20Crawling/READ.md)
+      3. [Library]()
 
 - Web Scraping
 
 - Data Visualization
+
+- Data Analysis
 
 <hr>
 

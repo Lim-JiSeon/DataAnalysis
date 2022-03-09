@@ -19,5 +19,5 @@
 <hr>
 
 ### Join & Experience
-- [privateclass]()
+- [privateclass](https://github.com/Lim-JiSeon/DataAnalysis/blob/main/privateclass/README.md)
   

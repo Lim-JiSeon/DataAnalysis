@@ -19,7 +19,7 @@
 
 ### 간단한 실습 
 - 네이버 웹툰의 요일 별 상위 웹툰 이름을 받아오기
-  - 네이버 웹툰 html 텍스트 받아오기
+  - 네이버 웹툰 html 텍스트 받아오기(1) - 연결
     ```python
     import requests
     import bs4
@@ -27,5 +27,16 @@
     req = requests.get("https://comic.naver.com/webtoon/weekday")
     print(req.text)
     ```
-    <br> [결과창 보기](https://github.com/Lim-JiSeon/DataAnalysis/blob/main/Crawling%20%26%20Scraping/codemate/Crawling/Library/example_result.html)
+    <br> [결과창 보기](https://github.com/Lim-JiSeon/DataAnalysis/blob/main/Crawling%20%26%20Scraping/codemate/Crawling/Library/example_result1.html)
     
+  - 네이버 웹툰 html 텍스트 받아오기(2) - html
+    ```python
+    import requests
+    import bs4
+    
+    req = requests.get("https://comic.naver.com.webtoon.weekday")
+    
+    html = bs4.BeautifulSoup(req.text,'html.parser')
+    print(html)
+    ```
+    <br> [결과창 보기](https://github.com/Lim-JiSeon/DataAnalysis/blob/main/Crawling%20%26%20Scraping/codemate/Crawling/Library/example_result2.html)

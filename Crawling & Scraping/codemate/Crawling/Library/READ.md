@@ -27,4 +27,5 @@
     req = requests.get("https://comic.naver.com/webtoon/weekday")
     print(req.text)
     ```
-    <br> [결과창]()
+    <br> [결과창 보기](https://github.com/Lim-JiSeon/DataAnalysis/blob/main/Crawling%20%26%20Scraping/codemate/Crawling/Library/example_result.html)
+    

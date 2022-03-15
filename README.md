@@ -10,6 +10,7 @@
       2. [Types of Crawling](https://github.com/Lim-JiSeon/DataAnalysis/blob/main/Crawling%20%26%20Scraping/codemate/Crawling/Types%20of%20Crawling/READ.md)
       3. [Library](https://github.com/Lim-JiSeon/DataAnalysis/blob/main/Crawling%20%26%20Scraping/codemate/Crawling/Library/READ.md)
       4. [HTML Structure](https://github.com/Lim-JiSeon/DataAnalysis/blob/main/Crawling%20%26%20Scraping/codemate/Crawling/HTML%20Structure/READ.md)
+      5. [Selector](https://github.com/Lim-JiSeon/DataAnalysis/blob/main/Crawling%20%26%20Scraping/codemate/Crawling/Selector/READ.md)
 
 - Web Scraping
 

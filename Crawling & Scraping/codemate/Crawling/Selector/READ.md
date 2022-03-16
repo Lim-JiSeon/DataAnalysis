@@ -111,8 +111,51 @@
 <hr>
 
 ### 선택자 실습  
+- [복권 사이트](https://dhlottery.co.kr/gameResult.do?method=byWin) 로또 번호 검색하기
+
+  <img width="1242" alt="image" src="https://user-images.githubusercontent.com/83554018/158497513-35f2a946-605f-44eb-bfc5-be4331635137.png">
+
+
+  - F12 -> 개발자 도구 창 열기
   
+    <img width="1107" alt="image" src="https://user-images.githubusercontent.com/83554018/158497556-368f68bc-6237-4c7b-bd45-7aa226e53c33.png">
+
+
+  - select 버튼 클릭
   
+    <img width="1083" alt="image" src="https://user-images.githubusercontent.com/83554018/158497605-1833a6a5-f3e7-4a60-b573-c906f2e08a78.png">
+
+
+  - 해당 태그와 선택자 찾기(Ctrl + F 누르면 검색 가능)
+  
+    <img width="1091" alt="image" src="https://user-images.githubusercontent.com/83554018/158497749-25a100a9-1b83-48d7-9c43-07658339b3e6.png">
+
+- 더 정확한 검색(id + class 이용)
+  - 포함관계 이용하기
+  
+    <img width="1087" alt="image" src="https://user-images.githubusercontent.com/83554018/158498003-b2b887e3-d1ab-4ada-98cb-5d31884b1eb4.png">
+    
+    ```html
+    <div id="article" class="contentsArticle">
+    ...
+      ...
+      ...
+        ...
+        <div class="nums">
+    ```
+    
+    <br>-> HTML은 태그의 내용으로, 태그가 사용되는 포함 관계를 갖는다. 이러한 포함관계는 <b>들여쓰기</b>를 통해 파악한다.
+    <br>-> id인 article이 class nums를 포함하고 있는 관계이므로 article을 이용해서 더 정확하게 nums를 찾을 수 있다.
+    
+    
+    <img width="1091" alt="image" src="https://user-images.githubusercontent.com/83554018/158499260-a6b06a6f-73e3-4314-b662-91e813234871.png">
+    
+    ```html
+    div#article div.class
+    ```
+
+    
+
   
   
   

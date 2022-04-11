@@ -19,7 +19,7 @@
 
 - Data Analysis
   - Kaggle
-    - [Titanic]()
+    - [Titanic](https://github.com/Lim-JiSeon/DataAnalysis/tree/main/Data%20Analysis/Kaggle/Titanic)
 
 <hr>
 

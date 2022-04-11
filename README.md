@@ -18,6 +18,8 @@
 - Data Visualization
 
 - Data Analysis
+  - Kaggle
+    - [Titanic]()
 
 <hr>
 

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="EUC-KR">
+<meta id="utitle" name="title" content="동행복권">
+<meta id="desc" name="description" content="동행복권 1013회 당첨번호 21,22,26,34,36,41+32. 1등 총 5명, 1인당 당첨금액 5,047,570,725원.">
+<title>로또6/45 - 회차별 당첨번호</title>
+<title>동행복권</title>
+
+
+
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="shortcut icon" href="/images/common/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/images/common/favicon.ico" type="image/x-icon">
+<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui.js"></script>
+<script type="text/javascript" src="/js/common.js" charset="utf-8"></script>
+<script type="text/javascript">
+
+fn_g_init_message("");
+
+var gameUserId = "";
+
+function goGame(){
+        var userId = "";
+
+        if(userId == '' || userId == null){
+                alert("로그인 후 사용 해주시기 바랍니다.");
+                location.href = "/user.do?method=login";
+                return;
+        }
+
+        $.ajax({
+                type:"get",                             // 메소드타입
+                url:"https://el.dhlottery.co.kr/portal_login.jsp",    // url
+                dataType:"jsonp",                       // 이부분이 중요 데이타타입을 jsonP로 해줘야 크로스도메인을 이용할수 있다.
+                jsonp : 'callback',                     // 콜백함수 이름 명이다.
+                timeout:3000,
+                error: function() {                     // 에러날경우 콜백함수
+                        alert('접속이 원활하지 않습니다.');
+                },
+                success: function(data){                        // 성공했을때 콜백함수
+
+                        if(userId == data.userId && data.userId != ""){
+                                doGamePopUp("");
+                        }else{
+                                alert("로그인 세션이 해제 되었습니다.\n다시 한번 로그인해 주시기 바랍니다.");
+                                document.location.href = "/user.do?method=logout";
+                        }
+        }});
+}
+
+function goGame(lottoId,agreeType){
+        var userId = "";
+        if(userId == '' || userId == null){
+                alert("로그인 후 사용 해주시기 바랍니다.");
+                location.href = "/user.do?method=login&returnUrl=" + encodeURIComponent('/gameInfo.do?method=lottoMainView&lottoId=' + lottoId);
+                return;
+        }
+
+        $.ajax({
+                type:"get",                             // 메소드타입
+                url:"https://el.dhlottery.co.kr/portal_login.jsp",    // url
+                dataType:"jsonp",                       // 이부분이 중요 데이타타입을 jsonP로 해줘야 크로스도메인을 이용할수 있다.
+                jsonp : 'callback',                     // 콜백함수 이름 명이다.
+                timeout:3000,
+                error: function() {                     // 에러날경우 콜백함수
+                        alert("시스템이 원활하지 않습니다.\n이용에 불편을 드려 죄송합니다.");
+                },
+                success: function(data){                        // 성공했을때 콜백함수
+
+                        if(userId == data.userId && data.userId != ""){
+                                doGamePopUp(lottoId,agreeType);
+                        }else{
+                                alert("로그인 세션이 해제 되었습니다.\n다시 한번 로그인해 주시기 바랍니다.");
+                                document.location.href = "/user.do?method=logout";
+                        }
+        }});
+}
+
+function goGamePnInfo(lottoId,agreeType,svcInfoPnPcMsgYn){
+        var svcInfoPnPcMsgYn = svcInfoPnPcMsgYn;
+
+        if (svcInfoPnPcMsgYn == "Y") {
+                svcInfoPnMsg();
+                return;
+        }
+
+        var userId = "";
+        if(userId == '' || userId == null){
+                alert("로그인 후 사용 해주시기 바랍니다.");
+                location.href = "/user.do?method=login&returnUrl=" + encodeURIComponent('/gameInfo.do?method=lottoMainView&lottoId=' + lottoId);
+                return;
+        }
+
+        $.ajax({
+                type:"get",                             // 메소드타입
+                url:"https://el.dhlottery.co.kr/portal_login.jsp",      // url
+                dataType:"jsonp",                       // 이부분이 중요 데이타타입을 jsonP로 해줘야 크로스도메인을 이용할수 있다.
+                jsonp : 'callback',                     // 콜백함수 이름 명이다.
+                timeout:3000,
+                error: function() {                     // 에러날경우 콜백함수
+                        alert("시스템이 원활하지 않습니다.\n이용에 불편을 드려 죄송합니다.");
+                },
+                success: function(data){                        // 성공했을때 콜백함수
+
+                        if(userId == data.userId && data.userId != ""){
+                                doGamePopUp(lottoId,agreeType);
+                        }else{
+                                alert("로그인 세션이 해제 되었습니다.\n다시 한번 로그인해 주시기 바랍니다.");
+                                document.location.href = "/user.do?method=logout";
+                        }
+        }});
+}
+
+function goGameElInfo(lottoId,agreeType,svcInfoElPcMsgYn){
+        var lottoId = lottoId;
+        var svcInfoElPcMsgYn = svcInfoElPcMsgYn;
+
+        /*
+        if (svcInfoElPcMsgYn == "Y") {
+                svcInfoElMsg();
+                return;
+        }
+        */
+
+        /*
+        if (svcInfoElPcMsgYn == "Y") {
+                svcInfoElTrMsg();
+                return;
+        }
+        */
+
+        if (svcInfoElPcMsgYn == "Y") {
+                if (lottoId == "LI21") {
+                        svcInfoElTrMsg();
+                        return;
+                } else {
+                        svcInfoElMsg();
+                        return;
+                }
+        }
+
+        var userId = "";
+        if(userId == '' || userId == null){
+                alert("로그인 후 사용 해주시기 바랍니다.");
+                location.href = "/user.do?method=login&returnUrl=" + encodeURIComponent('/gameInfo.do?method=lottoMainView&lottoId=' + lottoId);
+                return;
+        }
+
+        $.ajax({
+                type:"get",                             // 메소드타입
+                url:"https://el.dhlottery.co.kr/portal_login.jsp",      // url
+                dataType:"jsonp",                       // 이부분이 중요 데이타타입을 jsonP로 해줘야 크로스도메인을 이용할수 있다.
+                jsonp : 'callback',                     // 콜백함수 이름 명이다.
+                timeout:3000,
+                error: function() {                     // 에러날경우 콜백함수
+                        alert("시스템이 원활하지 않습니다.\n이용에 불편을 드려 죄송합니다.");
+                },
+                success: function(data){                        // 성공했을때 콜백함수
+
+                        if(userId == data.userId && data.userId != ""){
+                                doGamePopUp(lottoId,agreeType);
+                        }else{
+                                alert("로그인 세션이 해제 되었습니다.\n다시 한번 로그인해 주시기 바랍니다.");
+                                document.location.href = "/user.do?method=logout";
+                        }
+        }});
+}
+
+function goGameEnInfo(lottoId,agreeType,endInfoElPcMsgYn){
+        var endInfoElPcMsgYn = endInfoElPcMsgYn;
+
+        if (endInfoElPcMsgYn == "Y") {
+                endInfoElMsg();
+                return;
+        }
+
+        var userId = "";
+        if(userId == '' || userId == null){
+                alert("로그인 후 사용 해주시기 바랍니다.");
+                location.href = "/user.do?method=login&returnUrl=" + encodeURIComponent('/gameInfo.do?method=lottoMainView&lottoId=' + lottoId);
+                return;
+        }
+
+        $.ajax({
+                type:"get",                             // 메소드타입
+                url:"https://el.dhlottery.co.kr/portal_login.jsp",      // url
+                dataType:"jsonp",                       // 이부분이 중요 데이타타입을 jsonP로 해줘야 크로스도메인을 이용할수 있다.
+                jsonp : 'callback',                     // 콜백함수 이름 명이다.
+                timeout:3000,
+                error: function() {                     // 에러날경우 콜백함수
+                        alert("시스템이 원활하지 않습니다.\n이용에 불편을 드려 죄송합니다.");
+                },
+                success: function(data){                        // 성공했을때 콜백함수
+
+                        if(userId == data.userId && data.userId != ""){
+                                doGamePopUp(lottoId,agreeType);
+                        }else{
+                                alert("로그인 세션이 해제 되었습니다.\n다시 한번 로그인해 주시기 바랍니다.");
+                                document.location.href = "/user.do?method=logout";
+                        }
+        }});
+}
+
+function goGameElEnInfo(lottoId,agreeType,svcInfoElPcMsgYn,endInfoElPcMsgYn){
+        var svcInfoElPcMsgYn = svcInfoElPcMsgYn;
+        var endInfoElPcMsgYn = endInfoElPcMsgYn;
+
+        if (svcInfoElPcMsgYn == "Y") {
+                svcInfoElMsg();
+                return;
+        }
+
+        if (endInfoElPcMsgYn == "Y") {
+                endInfoElMsg();
+                return;
+        }
+
+        var userId = "";
+        if(userId == '' || userId == null){
+                alert("로그인 후 사용 해주시기 바랍니다.");
+                location.href = "/user.do?method=login&returnUrl=" + encodeURIComponent('/gameInfo.do?method=lottoMainView&lottoId=' + lottoId);
+                return;
+        }
+
+        $.ajax({
+                type:"get",                             // 메소드타입
+                url:"https://el.dhlottery.co.kr/portal_login.jsp",      // url
+                dataType:"jsonp",                       // 이부분이 중요 데이타타입을 jsonP로 해줘야 크로스도메인을 이용할수 있다.
+                jsonp : 'callback',                     // 콜백함수 이름 명이다.
+                timeout:3000,
+                error: function() {                     // 에러날경우 콜백함수
+                        alert("시스템이 원활하지 않습니다.\n이용에 불편을 드려 죄송합니다.");
+                },
+                success: function(data){                        // 성공했을때 콜백함수
+
+                        if(userId == data.userId && data.userId != ""){
+                                doGamePopUp(lottoId,agreeType);
+                        }else{
+                                alert("로그인 세션이 해제 되었습니다.\n다시 한번 로그인해 주시기 바랍니다.");
+                                document.location.href = "/user.do?method=logout";
+                        }
+        }});
+}
+
+function doGamePopUp(lotid,agreeType){
+        /*
+        * 스피드키노 LD10, 메가빙고 LD11, 더블잭마이더스 LD20, 파워볼 LD14, 트레져헌터 LI22, 트리플럭 LI21 -> gamePop
+        * 캐치미 LI23 -> catchPop
+        */
+        var type;
+
+        if( lotid === 'LI23' ){
+                type = 'catchPop';
+        }else{
+                type = 'gamePop';
+        }
+
+        if($("#agreeChk").is(":checked") || agreeType == 2){
+                var new_popup = centerPop('https://el.dhlottery.co.kr/game/TotalGame.jsp?LottoId='+ lotid, 'type', 1164, 645, 'no');
+        }else{
+                alert('약관에 동의해 주셔야 이용이 가능합니다.');
+                $("#agreeChk").focus();
+        }
+
+}
+
+//설문조사 팝업
+function popCenter(){
+        var new_popup = centerPop('http://www.dhlotterysurvey.com', '설문조사', 480, 800, 'yes');
+}
+
+//샘플게임 팝업
+function sample_pop(code, userId){
+
+        //location.href = "/gamezone.do?method=gameZoneMainView";
+        //return;
+        if(userId == null || userId == ""){
+                alert("로그인 후 이용이 가능합니다.");
+                //location.href = "/user.do?method=login";
+                //location.href = "/user.do?method=login&returnUrl=/gamezone.do?method=gameZoneMainView";
+                location.href = "/user.do?method=login&returnUrl=" + encodeURIComponent('/gameInfo.do?method=lottoMainView&lottoId=' + code);
+                return;
+        }
+        if(!$("#sampleAgreeChk").is(":checked")){
+                alert('약관에 동의해 주셔야 이용이 가능합니다.');
+                $("#sampleAgreeChk").focus();
+                return;
+        }
+
+        $.ajax({
+                type:"POST",                            // 메소드타입
+                url:"/gamezone.do?method=autoAgreeProc",// url
+                dataType:"json",                        // 이부분이 중요 데이타타입을 jsonP로 해줘야 크로스도메인을 이용할수 있다.
+                timeout:3000,
+                async:false,
+                contentType : "application/json; charset=EUC-KR",
+                error: function() {                     // 에러날경우 콜백함수
+                        console.log("error");
+                },
+                success: function(data){                        // 성공했을때 콜백함수
+                        if(data.successYn){
+                                console.log(data);
+                        }
+                }
+        });
+
+        $.ajax({
+                type:"get",                             // 메소드타입
+                url:"https://el.dhlottery.co.kr/portal_login.jsp",    // url
+                //data:{"jackpot":strJackpotData},      // 파라메터 타입
+                dataType:"jsonp",                       // 이부분이 중요 데이타타입을 jsonP로 해줘야 크로스도메인을 이용할수 있다.
+                timeout:3000,
+                jsonp : 'callback',                     // 콜백함수 이름 명이다.
+                error: function() {                     // 에러날경우 콜백함수
+                        alert("시스템이 원활하지 않습니다.\n이용에 불편을 드려 죄송합니다.");
+                },
+                success: function(data){                        // 성공했을때 콜백함수
+                        if(userId == data.userId && data.userId != ""){
+                                var new_popup = centerPop('https://el.dhlottery.co.kr/game_sample/TotalGame.jsp?LottoId=' + code, 'gamePop', 1164, 645, 'no');
+                        }else{
+                                alert("로그인 세션이 해제 되었습니다.\n다시 한번 로그인해 주시기 바랍니다.");
+                                document.location.href = "/user.do?method=logout";
+                        }
+        }});
+}
+
+//샘플게임(랜덤) 팝업
+function sample_random_pop(userId){
+
+        //location.href = "/gamezone.do?method=gameZoneMainView";
+        //return;
+        if(userId == null || userId == ""){
+                alert("로그인 후 이용이 가능합니다.");
+                location.href = "/user.do?method=login";
+//              location.href = "/user.do?method=login&returnUrl=/gamezone.do?method=gameZoneMainView";
+//              location.href = "/common.do?method=main";
+                return;
+        }
+
+        var x = Math.floor((Math.random() * 7) + 1 );
+
+        if(x == 1){
+                var code = "LD14";
+        }else if(x == 2){
+                var code = "LD10";
+        }else if(x == 3){
+                var code = "LD20";
+        }else if(x == 4){
+                var code = "LI23";
+        }else if(x == 5){
+                var code = "LI22";
+        }else if(x == 6){
+                var code = "LI21";
+        }else if(x == 7){
+                var code = "LD11";
+        }
+
+        $.ajax({
+                type:"get",                             // 메소드타입
+                url:"/gamezone.do?method=autoAgreeProc",// url
+                dataType:"json",                        // 이부분이 중요 데이타타입을 jsonP로 해줘야 크로스도메인을 이용할수 있다.
+                timeout:3000,
+                async:false,
+                contentType : "application/json; charset=EUC-KR",
+                error: function() {                     // 에러날경우 콜백함수
+                        console.log("error");
+                },
+                success: function(data){                        // 성공했을때 콜백함수
+                        if(data.successYn){
+                                console.log(data);
+                        }
+                }
+        });
+
+        $.ajax({
+                type:"get",                             // 메소드타입
+                url:"https://el.dhlottery.co.kr/portal_login.jsp",    // url
+                //data:{"jackpot":strJackpotData},      // 파라메터 타입
+                dataType:"jsonp",                       // 이부분이 중요 데이타타입을 jsonP로 해줘야 크로스도메인을 이용할수 있다.
+                timeout:3000,
+                jsonp : 'callback',                     // 콜백함수 이름 명이다.
+                error: function() {                     // 에러날경우 콜백함수
+                        alert("시스템이 원활하지 않습니다.\n이용에 불편을 드려 죄송합니다.");
+                },
+                success: function(data){                        // 성공했을때 콜백함수
+                        if(userId == data.userId && data.userId != ""){
+                                var new_popup = centerPop('https://el.dhlottery.co.kr/game_sample/TotalGame.jsp?LottoId=' + code , 'gamePop', 1164, 645, 'no');
+                        }else{
+                                alert("로그인 세션이 해제 되었습니다.\n다시 한번 로그인해 주시기 바랍니다.");
+                                document.location.href = "/user.do?method=logout";
+                        }
+        }});
+}
+
+
+
+function doReserve(){
+        var userId = "";
+
+        if(userId == '' || userId == null){
+                alert("로그인 후 사용 해주시기 바랍니다.");
+                //location.href = "/user.do?method=login";
+                location.href = "/user.do?method=login&returnUrl=/gameInfo.do?method=game720Method";
+                url:"https://el.dhlottery.co.kr/portal_login.jsp",    // url
+                dataType:"jsonp",                       // 이부분이 중요 데이타타입을 jsonP로 해줘야 크로스도메인을 이용할수 있다.
+                timeout:3000,
+                jsonp : 'callback',                     // 콜백함수 이름 명이다.
+                error: function() {                     // 에러날경우 콜백함수
+                        alert("시스템이 원활하지 않습니다.\n이용에 불편을 드려 죄송합니다.");
+                },
+                success: function(data){                        // 성공했을때 콜백함수
+                        if(userId == data.userId && data.userId != ""){
+                                        window.open('https://el.dhlottery.co.kr/lotto720.do?method=reserveBuy', 'pensionPop' , 'width=930, height=672, left=0, top=0, status=no, toolbar=no, menubar=no, location=no');
+                        }else{
+                                alert("로그인 세션이 해제 되었습니다.\n다시 한번 로그인해 주시기 바랍니다.");
+                                document.location.hre

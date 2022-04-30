@@ -40,3 +40,6 @@ if target in raw.text:
     idx = raw.text.index(target)
     print(raw.text[idx:idx+578])
 ```
+
+## 보충학습 - 상태응답코드(HTTP 상태코드)
+<https://ko.wikipedia.org/wiki/HTTP_%EC%83%81%ED%83%9C_%EC%BD%94%EB%93%9C>

@@ -16,6 +16,8 @@
           - [Static Crawling(2)](https://github.com/Lim-JiSeon/DataAnalysis/blob/main/Crawling%20%26%20Scraping/codemate/Crawling/Static%20Crawling%20(2)/READ.md)
           - [Static Crawling(3)]()
           - [Static Crawling(4)]()
+  - Project
+    - [BigDataAssigment]()
 
 - Web Scraping
 

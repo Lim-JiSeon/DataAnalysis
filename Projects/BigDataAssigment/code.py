@@ -3,7 +3,6 @@ import urllib.request
 import pandas as pd
 import datetime, time
 
-num = 0
 def kyochon_store(result):
     for sido in range(1,18):
       for gu in range(1,46):

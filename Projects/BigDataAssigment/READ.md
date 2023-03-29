@@ -4,6 +4,7 @@
 - 사용언어는 python으로 BeautifulSoup, urllib.request, pandas 등 이용
 - 가져온 데이터는 교촌치킨 매장 정보로 이름, 시도, 군구, 주소
 - csv 파일로 저장
+- [코드로 이동](https://github.com/Lim-JiSeon/DataAnalysis/blob/main/Projects/BigDataAssigment/code.py)
 
 <br><br><br>
 
